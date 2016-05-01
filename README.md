@@ -104,7 +104,7 @@ match up with the name of the table you created earlier):
 
     $ docker run -it --rm --link zookeeper:zookeeper --link kafka:kafka \
         --link schema-registry:schema-registry confluent/tools \
-        kafka-avro-console-consumer --property print.key=true --topic test --from-beginning
+        kafka-avro-console-consumer --property print.key=true --topic test --from-beginning --zookeeper zookeeper -property schema.registry.url=http://schema-registry:8081
 
 This should print out the contents of the `test` table in JSON format (key/value separated
 by tab). Now go back to the `psql` terminal, and change some data — insert, update or delete
